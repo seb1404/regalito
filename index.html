@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Cumple Amor ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding: 10px;
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23ff80c0'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") 12 12, auto;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    
+    /* Página de introducción */
+    .intro-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para que se vea el video */
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .start-btn {
+      background: linear-gradient(45deg, #ff80c0, #5defff);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      margin: 8px;
+      border-radius: 12px;
+      font-size: 0.95em;
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%235defff'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") 12 12, pointer;
+      font-family: 'Press Start 2P', cursive;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      animation: pulseButton 2s infinite;
+    }
+
+    @keyframes pulseButton {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .start-btn:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #5defff, #ff80c0);
+      filter: brightness(1.2);
+    }
+
+    .start-btn:active {
+      transform: translateY(1px) scale(0.95);
+      filter: brightness(0.9);
+    }
+
+    /* Video de fondo */
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Animación del título */
+    h1 {
+      color: #ff5db1;
+      font-size: 2em;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+      padding: 12px 18px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      animation: titleEffect 3s infinite alternate;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes titleEffect {
+      0% {
+        color: #ff5db1;
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        color: #ff80c0;
+        transform: translateY(-10px) scale(1.05);
+      }
+      100% {
+        color: #ff5db1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Estilos mejorados para los botones */
+    .btn {
+      background: linear-gradient(45deg, #ff80c0, #5defff);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      margin: 8px;
+      border-radius: 12px;
+      font-size: 0.95em;
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%235defff'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") 12 12, pointer;
+      font-family: 'Press Start 2P', cursive;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #5defff, #ff80c0);
+      filter: brightness(1.2);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.95);
+      filter: brightness(0.9);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    /* Mejoras en los títulos de sección */
+    .section h2 {
+      color: #fff;
+      background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+      padding: 10px 16px;
+      border-radius: 12px;
+      margin: 14px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      transform: translateY(0);
+      transition: all 0.3s ease;
+      font-size: 1.1em;
+    }
+
+    .section h2:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      filter: brightness(1.2);
+    }
+
+    /* Mejoras en el mensaje */
+    #message {
+      display: none;
+      position: static;
+      left: unset;
+      bottom: unset;
+      transform: none;
+      z-index: 1;
+      width: 100%;
+      max-width: 600px;
+      min-width: 180px;
+      margin: 18px auto 0 auto;
+      max-height: 28vh;
+      font-size: 1em;
+      padding: 18px 16px;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, rgba(93,239,255,0.25) 0%, rgba(255,128,192,0.25) 100%),
+                  linear-gradient(45deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7));
+      white-space: pre-wrap;
+      line-height: 1.8;
+      letter-spacing: 0.8px;
+      border: 4px solid;
+      border-image: linear-gradient(270deg, #5defff, #ff80c0, #5defff) 1;
+      box-shadow: 0 0 24px 4px rgba(255,128,192,0.25), 0 0 40px 8px rgba(93,239,255,0.15);
+      animation: borderMove 3s linear infinite;
+    }
+
+    @keyframes borderMove {
+      0% {
+        border-image-source: linear-gradient(270deg, #5defff, #ff80c0, #5defff);
+      }
+      100% {
+        border-image-source: linear-gradient(630deg, #ff80c0, #5defff, #ff80c0);
+      }
+    }
+
+    #message:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    #message::-webkit-scrollbar {
+      width: 8px;
+      background: #222;
+      border-radius: 8px;
+    }
+
+    #message::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #ff80c0, #5defff);
+      border-radius: 8px;
+    }
+
+    /* Sección de botones */
+    .section {
+      margin-bottom: 30px;
+    }
+
+    /* Popup para videos de canciones */
+    .popup-bg {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInBg 0.3s;
+    }
+    .popup-bg.active {
+      display: flex;
+    }
+    @keyframes fadeInBg {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    .popup-content {
+      background: linear-gradient(135deg, #181c2f 80%, #222 100%);
+      border-radius: 18px;
+      padding: 32px 24px 24px 24px;
+      box-shadow: 0 8px 40px 8px rgba(93,239,255,0.18);
+      max-width: 700px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      border: none;
+      animation: popupAppear 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+      min-width: 340px;
+      min-height: 260px;
+      justify-content: center;
+    }
+    .popup-content video {
+      display: block;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 60vh;
+      margin-bottom: 10px;
+      margin-top: 8px;
+      box-shadow: 0 0 24px 4px rgba(255,128,192,0.18), 0 0 40px 8px rgba(93,239,255,0.12);
+      background: #181c2f;
+      outline: none;
+      z-index: 1;
+      border: none;
+    }
+    .popup-title {
+      color: #fff;
+      font-size: 1.1em;
+      margin-bottom: 12px;
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+      text-shadow: 1px 1px 2px #000;
+      width: 100%;
+      word-break: break-word;
+    }
+    .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 32px;
+      background: linear-gradient(45deg, #ff80c0, #5defff);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 1.2em;
+      cursor: pointer;
+      font-family: 'Press Start 2P', cursive;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .close-btn:hover {
+      background: linear-gradient(45deg, #5defff, #ff80c0);
+    }
+
+    /* Sección de mensaje especial */
+    .special-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 40px 0 20px 0;
+    }
+    .special-title {
+      color: #fff;
+      font-size: 1.2em;
+      margin-bottom: 18px;
+      font-family: 'Press Start 2P', cursive;
+      text-shadow: 1px 1px 2px #000;
+      background: linear-gradient(45deg, #5defff, #ff80c0);
+      padding: 10px 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(93,239,255,0.12);
+    }
+    .audio-btn {
+      background: #222;
+      border: 3px solid #ff80c0;
+      border-radius: 12px;
+      padding: 16px 24px;
+      cursor: pointer;
+      font-size: 2.2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(93,239,255,0.12);
+      transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+      margin-bottom: 10px;
+      outline: none;
+      position: relative;
+    }
+    .audio-btn.playing {
+      border-color: #5defff;
+      background: linear-gradient(90deg, #5defff 40%, #ff80c0 100%);
+      box-shadow: 0 0 24px 4px #5defff, 0 0 40px 8px #ff80c0;
+      animation: pulseAudio 1.2s infinite alternate;
+    }
+    @keyframes pulseAudio {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.2); }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Página de introducción -->
+  <div id="intro-page" class="intro-page">
+    <h1>Feliz cumpleaños, Thabatta. 
+	Dale a Start cuando gustes. ❤️</h1>
+    <button class="start-btn" onclick="startGame()">Start</button>
+  </div>
+
+  <!-- Video de fondo -->
+  <video id="video-bg" autoplay muted loop>
+    <source src="video_bg.mp4" type="video/mp4">
+    Tu navegador no soporta el formato de video.
+  </video>
+
+  <!-- Contenido de la página principal -->
+  <div id="content" style="display: none;">
+    <h1>¡Feliz cumple, mi amor! 🌸</h1>
+
+    <div class="section">
+      <h2>Motivos por los que me enamoré de vos.</h2>
+      <button class="btn" onclick="showMessage('Esa risita tan amorosa, tan linda, todavía recuerdo la primera vez que la escuché. Se sintió como un mimo al alma, al corazón, quizás en un principio eso fue lo que me flechó.')">I</button>
+      <button class="btn" onclick="showMessage('Tu manera de amarme cada día, tu responsabilidad afectiva, la conexión que tenemos. Amo cómo podemos tontear, chismear, disfrutar juntos pero sobretodo, llenarnos de cariño el uno al otro.')">II</button>
+      <button class="btn" onclick="showMessage('Lo increíblemente inteligente y capaz de todo lo que te propongas que sos, sos admirable, muy intelectual y eso me enamora muchísimo. Podemos charlar de mil temas, y en los temas serios siempre aportas una inteligencia y visión muy destacable.')">III</button>
+    </div>
+
+    <div class="section">
+      <h2>Momentos que recuerdo juntos</h2>
+      <button class="btn" onclick="showMessage('Nuestra primera charla larga, esa conexión instantánea.')">I</button>
+      <button class="btn" onclick="showMessage('Cuando caminamos juntos bajo la lluvia.')">II</button>
+      <button class="btn" onclick="showMessage('Las risas espontáneas que solo tú me sacas.')">III</button>
+    </div>
+
+    <div class="section">
+      <h2>Mensajes bonitos</h2>
+      <button class="btn" onclick="showMessage('Te amo más de lo que las palabras pueden decir.')">I</button>
+      <button class="btn" onclick="showMessage('Gracias por ser parte de mi vida.')">II</button>
+      <button class="btn" onclick="showMessage('Cada momento contigo es un regalo.')">III</button>
+    </div>
+
+    <div class="section">
+      <h2>Canciones que nos dedicamos</h2>
+      <button class="btn" onclick="openSong('Buscarte Lejos', 'videos/cancion_1.mp4')">Buscarte Lejos</button>
+      <button class="btn" onclick="openSong('Die With a Smile', 'videos/cancion_2.mp4')">Die With a Smile</button>
+      <button class="btn" onclick="openSong('Mon Amour', 'videos/cancion_3.mp4')">Mon Amour</button>
+    </div>
+
+    <div class="special-section">
+      <div class="special-title">Un mensaje especial</div>
+      <button class="audio-btn" id="audio-btn" onclick="toggleAudio()">
+        <span style="font-size:2em;">🔊</span>
+      </button>
+      <audio id="special-audio" src="audio/mensaje.mp3"></audio>
+    </div>
+
+    <div id="message"></div>
+
+    <!-- Popup para video de canción (ahora con video local) -->
+    <div class="popup-bg" id="popup-bg">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closeSong()">✕</button>
+        <div class="popup-title" id="popup-title"></div>
+        <video id="popup-video-local" controls>
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function startGame() {
+      document.getElementById('intro-page').style.display = 'none';  // Ocultar la página de introducción
+      document.getElementById('content').style.display = 'block';  // Mostrar el contenido de la página principal
+    }
+
+    let typeWriterTimeout = null;
+    let hideMessageTimeout = null;
+
+    function showMessage(msg) {
+      let messageBox = document.getElementById('message');
+      // Limpiar timeouts previos
+      if (typeWriterTimeout) clearTimeout(typeWriterTimeout);
+      if (hideMessageTimeout) clearTimeout(hideMessageTimeout);
+      messageBox.style.display = 'block';
+      messageBox.textContent = '';
+      let i = 0;
+      function typeWriter() {
+        if (i <= msg.length) {
+          messageBox.textContent = msg.slice(0, i);
+          i++;
+          typeWriterTimeout = setTimeout(typeWriter, 70);
+        } else {
+          hideMessageTimeout = setTimeout(() => {
+            messageBox.style.display = 'none';
+          }, 5000);
+        }
+      }
+      typeWriter();
+    }
+
+    function openSong(title, videoPath) {
+      document.getElementById('popup-title').textContent = title;
+      var video = document.getElementById('popup-video-local');
+      video.src = videoPath;
+      video.load();
+      document.getElementById('popup-bg').classList.add('active');
+      video.focus();
+    }
+    function closeSong() {
+      document.getElementById('popup-bg').classList.remove('active');
+      var video = document.getElementById('popup-video-local');
+      video.pause();
+      video.src = '';
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById('special-audio');
+      const btn = document.getElementById('audio-btn');
+      if (audio.paused) {
+        audio.play();
+        btn.classList.add('playing');
+      } else {
+        audio.pause();
+        btn.classList.remove('playing');
+      }
+    }
+    document.getElementById('special-audio').addEventListener('ended', function() {
+      document.getElementById('audio-btn').classList.remove('playing');
+    });
+  </script>
+
+</body>
+</html>
