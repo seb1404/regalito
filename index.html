@@ -446,6 +446,7 @@
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="loading.css">
 </head>
 <body>
 
@@ -478,37 +479,37 @@
 
   <!-- Contenido de la página principal -->
   <div id="content" style="display: none;">
-    <h1>¡Feliz cumple, Thabatta. 💕</h1>
+    <h1 class="fade-in">¡Feliz cumple, Thabatta. 💕</h1>
 
-    <div class="section">
+    <div class="section fade-in">
       <h2>Motivos por los que me enamoré de vos.</h2>
       <button class="btn" onclick="showMessage('Esa risita tan amorosa, tan linda, todavía recuerdo la primera vez que la escuché. Se sintió como un mimo al alma, al corazón, quizás en un principio eso fue lo que me flechó.')">I</button>
       <button class="btn" onclick="showMessage('Tu manera de amarme cada día, tu responsabilidad afectiva, la conexión que tenemos. Amo cómo podemos tontear, chismear, disfrutar juntos pero sobretodo, llenarnos de cariño el uno al otro.')">II</button>
       <button class="btn" onclick="showMessage('Lo increíblemente inteligente y capaz de todo lo que te propongas que sos, sos admirable, muy intelectual y eso me enamora muchísimo. Podemos charlar de mil temas, y en los temas serios siempre aportas una inteligencia y visión muy destacable.')">III</button>
     </div>
 
-    <div class="section">
+    <div class="section fade-in">
       <h2>Momentos que recuerdo juntos</h2>
       <button class="btn" onclick="showMessage('Cuando nos desvelamos por primera vez hasta las 7 de la mañana.')">I</button>
       <button class="btn" onclick="showMessage('La primera vez que dormimos juntitos en llamada.')">II</button>
       <button class="btn" onclick="showMessage('Cuando me dijiste te amo por primera vez, se me derritió el corazón.')">III</button>
     </div>
 
-    <div class="section">
+    <div class="section fade-in">
       <h2>Mensajes bonitos</h2>
       <button class="btn" onclick="showMessage('Quiero pasar el resto de mis días con vos, mi cielito. Me encantas mucho. ❤️')">I</button>
       <button class="btn" onclick="showMessage('Espero que tengas un súper feliz cumpleaños, y que este regalito especial te guste mucho. ❤️')">II</button>
       <button class="btn" onclick="showMessage('Cada día que pasa estoy más convencido de que sos el amor de mi vida. Te Amo. ❤️')">III</button>
     </div>
 
-    <div class="section">
+    <div class="section fade-in">
       <h2>Canciones que nos dedicamos</h2>
       <button class="btn" onclick="openSong('Buscarte Lejos', 'https://github.com/seb1404/seb1404.github.io/releases/download/v1.0/cancion_1.mp4')">Buscarte Lejos</button>
       <button class="btn" onclick="openSong('Die With a Smile', 'https://github.com/seb1404/seb1404.github.io/releases/download/v1.0/cancion_2.mp4')">Die With a Smile</button>
       <button class="btn" onclick="openSong('Mon Amour', 'https://github.com/seb1404/seb1404.github.io/releases/download/v1.0/cancion_3.mp4')">Mon Amour</button>
     </div>
 
-    <div class="special-section">
+    <div class="special-section fade-in">
       <div class="special-title">Un mensaje especial</div>
       <button class="audio-btn" id="audio-btn" onclick="toggleAudio()">
         <span style="font-size:2em;">🔊</span>
@@ -530,10 +531,28 @@
     </div>
   </div>
 
+  <div class="loading-container">
+    <img src="img/gato_transparente.png" alt="Loading..." class="loading-cat">
+  </div>
+
   <script>
     function startGame() {
-      document.getElementById('intro-page').style.display = 'none';  // Ocultar la página de introducción
-      document.getElementById('content').style.display = 'block';  // Mostrar el contenido de la página principal
+      const loadingContainer = document.querySelector('.loading-container');
+      loadingContainer.classList.add('active');
+      
+      setTimeout(function() {
+        loadingContainer.classList.remove('active');
+        document.getElementById('intro-page').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        
+        // Activar las animaciones de fade-in
+        setTimeout(() => {
+          const fadeElements = document.querySelectorAll('.fade-in');
+          fadeElements.forEach(element => {
+            element.classList.add('active');
+          });
+        }, 100);
+      }, 3000);
     }
 
     let typeWriterTimeout = null;
@@ -626,6 +645,20 @@
         bgAudio.volume = parseFloat(this.value);
       });
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const startButton = document.querySelector('.start-button');
+      const loadingContainer = document.querySelector('.loading-container');
+      
+      startButton.addEventListener('click', function() {
+        loadingContainer.classList.add('active');
+        
+        setTimeout(function() {
+          loadingContainer.classList.remove('active');
+          window.location.href = 'pagina_principal.html';
+        }, 3000);
+      });
+    });
   </script>
 
 </body>
