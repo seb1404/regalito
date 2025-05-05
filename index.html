@@ -466,10 +466,15 @@
   <audio id="bg-audio" src="audio/bg_audio.mp3" loop autoplay></audio>
 
   <!-- Control de volumen para el audio de fondo -->
-  <div id="bg-audio-volume" style="position:fixed;bottom:24px;left:24px;z-index:3000;display:flex;align-items:center;background:rgba(24,28,47,0.85);border-radius:16px;padding:8px 16px;box-shadow:0 2px 12px #0004;gap:10px;">
+  <div id="bg-audio-volume" style="position:fixed;bottom:24px;left:24px;z-index:3000;display:flex;align-items:center;background:rgb(247, 130, 159);border-radius:16px;padding:8px 16px;box-shadow:0 2px 12px #0004;gap:10px;">
     <span style="color:#5defff;font-size:1.3em;">🎶</span>
     <input type="range" id="bg-audio-slider" min="0" max="1" step="0.01" value="0.15" style="accent-color:#5defff;width:100px;">
   </div>
+
+  <!-- Botón para activar música de fondo -->
+  <button id="enable-bg-audio" style="position:fixed;top:24px;right:24px;z-index:4000;background:linear-gradient(90deg,#5defff,#ff80c0);color:#222;font-family:'Press Start 2P',cursive;font-size:1em;padding:10px 18px;border:none;border-radius:12px;box-shadow:0 2px 12px #0004;cursor:pointer;display:flex;align-items:center;gap:8px;">
+    <span style="font-size:1.2em;">🎶</span> Activar música de fondo
+  </button>
 
   <!-- Contenido de la página principal -->
   <div id="content" style="display: none;">
@@ -558,10 +563,29 @@
 
     // Control de audio de fondo y videos
     const bgAudio = document.getElementById('bg-audio');
+    const enableBgAudioBtn = document.getElementById('enable-bg-audio');
     if (bgAudio) {
-      bgAudio.volume = 0.15;
-      bgAudio.play().catch(()=>{}); // Autoplay puede requerir interacción
+      bgAudio.volume = 0.25;
+      // Intentar autoplay
+      bgAudio.play().catch(()=>{});
     }
+    // Forzar play al primer clic o al botón
+    function tryEnableBgAudio() {
+      if (bgAudio && bgAudio.paused) {
+        bgAudio.play().then(()=>{
+          if (enableBgAudioBtn) enableBgAudioBtn.style.display = 'none';
+        }).catch(()=>{});
+      } else {
+        if (enableBgAudioBtn) enableBgAudioBtn.style.display = 'none';
+      }
+    }
+    if (enableBgAudioBtn) {
+      enableBgAudioBtn.addEventListener('click', tryEnableBgAudio);
+    }
+    document.addEventListener('click', function enableAudioOnce() {
+      tryEnableBgAudio();
+      document.removeEventListener('click', enableAudioOnce);
+    });
 
     function openSong(title, videoPath) {
       document.getElementById('popup-title').textContent = title;
